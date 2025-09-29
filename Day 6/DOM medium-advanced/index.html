@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 13 — Events, Forms & Delegation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section>
+    <h2>Button with Event Object</h2>
+    <button id="clickBtn">Click Me</button>
+  </section>
+
+  <section>
+    <h2>Bubbling vs Capturing</h2>
+    <div id="parentDiv" style="width:150px;height:150px;background:red;margin-top:10px;">
+      Parent Div
+      <button id="childBtn">Child Button</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Delegated Event List</h2>
+    <ul id="groceryList">
+      <li>Coffee</li>
+      <li>Sugar</li>
+      <li>Salt</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Form Validator</h2>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email">
+      <small id="emailError"></small>
+      <input type="password" id="password" placeholder="Password">
+      <small id="passwordError"></small>
+      <button type="submit">Login</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Keyboard Shortcut</h2>
+    <input type="text" id="searchBox" placeholder="Press / to focus">
+  </section>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+body 
+{ font-family: Arial, sans-serif; 
+  padding: 20px; 
+  line-height: 1.5; }
+section 
+{ 
+  margin-bottom: 30px; 
+}
+    h2 
+    { 
+      border-bottom: 2px solid #333; 
+      padding-bottom: 5px;
+     }
+    small 
+    { 
+      color: red; 
+      display: block;
+      margin-top: 2px; 
+      font-size: 0.9em; 
+    }
+    input, button 
+    { 
+      margin: 5px 0; 
+      padding: 5px; 
+    }
