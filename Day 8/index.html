@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo App</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="javascript.svg">
+</head>
+<body>
+  <main class="todo-app">
+    <h1>Todo List</h1>
+
+    <!-- Input -->
+    <div class="todo-input">
+      <input type="text" id="new-todo" placeholder="What needs to be done?">
+      <button id="add-btn">Add</button>
+    </div>
+
+    <!-- Todo List -->
+    <ul id="todo-list"></ul>
+
+    <!-- Filters + Stats -->
+    <div class="controls">
+      <div class="filters">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="active">Active</button>
+        <button data-filter="completed">Completed</button>
+      </div>
+      <div class="stats" id="stats"></div>
+    </div>
+  </main>
+
+ <script type="module" src="script.js"></script>
+</body>
+</html>
