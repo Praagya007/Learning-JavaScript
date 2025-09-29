@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 12 — DOM Fundamentals</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.5; }
+    section { margin-bottom: 30px; }
+    h2 { border-bottom: 2px solid #333; padding-bottom: 5px; }
+    .active { background-color: yellow; }
+  </style>
+</head>
+<body>
+  <section>
+    <h2>Selectors</h2>
+    <ul id="fruits">
+      <li class="item">Apple</li>
+      <li class="item">Banana</li>
+      <li class="item">Cherry</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Creating & Inserting Elements</h2>
+    <ul id="dynamicFruits"></ul>
+  </section>
+
+  <section>
+    <h2>innerHTML vs textContent</h2>
+    <div id="htmlVsText" style="padding:5px; border:1px solid #333;"></div>
+  </section>
+
+  <section>
+    <h2>Attributes, classList, styles, dataset</h2>
+    <img id="demoImg" src="" alt="Demo Image" width="100">
+    <button id="toggleBtn">Toggle Color</button>
+    <p id="demoText">This is a demo paragraph.</p>
+    <ul id="datasetList">
+      <li data-id="101" data-category="electronics">Laptop</li>
+      <li data-id="102" data-category="furniture">Chair</li>
+    </ul>
+  </section>
+
+  <script>
+    // Selectors
+    const firstItem = document.querySelector(".item");
+    const allItems = document.querySelectorAll(".item");
+    console.log("First item:", firstItem.textContent);
+    allItems.forEach(el => console.log("All items:", el.textContent));
+
+    // Creating & inserting elements
+    const fruitsArray = ["Mango", "Orange", "Pineapple"];
+    const dynamicFruits = document.getElementById("dynamicFruits");
+    fruitsArray.forEach(fruit => {
+      const li = document.createElement("li");
+      li.textContent = fruit;
+      dynamicFruits.appendChild(li);
+    });
+
+    // innerHTML vs textContent
+    const htmlVsText = document.getElementById("htmlVsText");
+    htmlVsText.textContent = "<b>Bold Text</b>"; // plain text
+    htmlVsText.innerHTML = "<b>Bold Text</b>";  // rendered bold
+
+    // Attributes, classList, styles, dataset
+    const demoImg = document.getElementById("demoImg");
+    demoImg.setAttribute("src", "https://via.placeholder.com/100");
+    console.log("Alt text:", demoImg.getAttribute("alt"));
+
+    const toggleBtn = document.getElementById("toggleBtn");
+    toggleBtn.addEventListener("click", () => {
+      toggleBtn.classList.toggle("active");
+    });
+
+    const demoText = document.getElementById("demoText");
+    demoText.style.color = "blue";
+    demoText.style.fontSize = "18px";
+
+    const datasetList = document.getElementById("datasetList");
+    datasetList.querySelectorAll("li").forEach(li => {
+      console.log(li.dataset.id, li.dataset.category);
+    });
+  </script>
+</body>
+</html>

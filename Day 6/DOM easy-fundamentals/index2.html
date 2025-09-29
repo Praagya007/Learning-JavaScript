@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+ <style>
+  *{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+ .active{
+  background-color: yellow;
+  font-weight: bold;
+ }
+
+
+ </style>
+</head>
+<body>
+  <div>
+  <input id="itemInput" type="text" placeholder="Enter item">
+  <button id="addBtn">Add</button>
+  <ul id="list"></ul>
+</div>
+<script>
+const input = document.querySelector("#itemInput");
+const addBtn = document.querySelector("#addBtn");
+const list = document.querySelector("#list");
+
+addBtn.addEventListener("click", () => {
+  const value = input.value.trim();
+  if (!value) return;
+
+  const li = document.createElement("li");
+  li.textContent = value;
+
+  // Highlight on click
+  li.addEventListener("click", () => {
+    list.querySelectorAll("li").forEach(el => el.classList.remove("active")); //Removes any active list if other is clicked. 
+    li.classList.add("active");
+  });
+
+  // Remove button
+  const removeBtn = document.createElement("button");
+  removeBtn.textContent = "❌";
+  removeBtn.addEventListener("click", () => li.remove());
+
+  li.append(removeBtn);
+  list.append(li);
+
+  input.value = "";
+});
+
+</script>
+</body>
+</html>
