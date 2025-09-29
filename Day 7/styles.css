@@ -1,0 +1,168 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ==== Base Styles ==== */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  transition: background 0.3s, color 0.3s;
+  padding: 10px;
+}
+
+/* ==== Light/Dark Mode ==== */
+.light-mode {
+  background-color: #f5f5f5;
+  color: #000;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #fff;
+}
+
+/* ==== Calculator Container ==== */
+.calculator {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 320px;
+  background-color: inherit;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ==== Input Box ==== */
+#Input {
+  width: 100%;
+  height: 50px;
+  font-size: 1.5rem;
+  text-align: right;
+  padding: 8px 10px;
+  border: 2px solid #888;
+  border-radius: 5px;
+  background-color: inherit;
+  color: inherit;
+  margin-bottom: 15px;
+}
+
+/* ==== Buttons Grid ==== */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* ==== Buttons ==== */
+button {
+  padding: 15px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+  width: 100%;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+/* ==== Button Colors ==== */
+.number, .decimal {
+  background-color: #6c757d;
+  color: white;
+}
+
+.operator {
+  background-color: #007bff;
+  color: white;
+}
+
+.equal {
+  grid-column: span 4;   /* Equal button takes full row */
+  background-color: #28a745;
+  color: white;
+}
+
+.deleteAll, .deletePrevious {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* ==== Theme Toggle Switch ==== */
+.theme-toggle {
+  margin-bottom: 20px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.switch input:checked + .slider {
+  background-color: black;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.light {
+  background-color: rgb(201, 200, 200);
+}
+
+.dark {
+  background-color: gray;
+}

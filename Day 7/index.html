@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/mathjs@12.4.1/lib/browser/math.js"></script>
+</head>
+<body class="light-mode">
+  <div class="theme-toggle">
+    <label class="switch">
+      <input type="checkbox" id="themeToggle">
+      <span class="slider">
+        <span class="icon light"></span>
+        <span class="icon dark"></span>
+      </span>
+    </label>
+  </div>
+
+  <div class="calculator">
+    <input id="Input" readonly>
+    <div class="buttons">
+      <button class="deleteAll">AC</button>
+      <button class="deletePrevious">DEL</button>
+      <button class="operator">(</button>
+      <button class="operator">)</button>
+
+      <button class="number">7</button>
+      <button class="number">8</button>
+      <button class="number">9</button>
+      <button class="operator">/</button>
+
+      <button class="number">4</button>
+      <button class="number">5</button>
+      <button class="number">6</button>
+      <button class="operator">*</button>
+
+      <button class="number">1</button>
+      <button class="number">2</button>
+      <button class="number">3</button>
+      <button class="operator">-</button>
+
+      <button class="number">0</button>
+      <button class="decimal">.</button>
+      <button class="operator">%</button>
+      <button class="operator">+</button>
+
+      <button class="equal">=</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
