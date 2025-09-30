@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Counter State Pattern</title>
+</head>
+<body>
+  <script>
+    let state = { count: 0 };
+
+    function render() {
+      document.body.innerHTML = `
+        <h1>Count: ${state.count}</h1>
+        <button id="inc">+1</button>
+        <button id="dec">-1</button>
+        <button id="double">+2</button>
+        <button id="double-minus">-2</button>
+        <button id="reset">Reset</button>
+      `;
+
+      // 📌 assign buttons
+      const addBtn = document.getElementById("inc");
+      const subBtn = document.getElementById("dec");
+      const doubleBtn = document.getElementById("double");
+      const doubleMinusBtn = document.getElementById("double-minus");
+      const resetBtn = document.getElementById("reset");
+
+      // 🧠 Add event listeners
+      addBtn.addEventListener("click", () => updateState(state.count + 1));
+      subBtn.addEventListener("click", () => updateState(state.count - 1));
+      doubleBtn.addEventListener("click", () => updateState(state.count + 2));
+      doubleMinusBtn.addEventListener("click", () => updateState(state.count - 2));
+      resetBtn.addEventListener("click", () => updateState(0));
+
+      console.log("🌀 Rendered with state:", state);
+    }
+
+    // ✅ Helper to immutably update state
+    function updateState(newCount) {
+      state = { ...state, count: newCount };
+      render();
+    }
+
+    // ✅ Add keyboard shortcuts only once
+    document.addEventListener("keydown", (event) => {
+      const key = event.key;
+
+      if (key === "+") updateState(state.count + 1);
+      else if (key === "-") updateState(state.count - 1);
+      else if (key === "*") updateState(state.count + 2);
+      else if (key === "/") updateState(state.count - 2);
+      else if (key.toLowerCase() === "r") updateState(0);
+    });
+
+    render();
+  </script>
+</body>
+</html>
