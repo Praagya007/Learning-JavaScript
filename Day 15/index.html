@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub User Search</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GitHub User Search</h1>
+            <div class="search-container">
+                <div class="search-input-wrapper">
+                    <input type="text" id="searchInput" placeholder="Search GitHub users...">
+                    <button class="clear-button">✕</button>
+                </div>
+                <button id="searchButton">Search</button>
+            </div>
+        </header>
+
+        <main>
+            <div id="resultsContainer" class="results-container">
+                <!-- Results will be inserted here -->
+            </div>
+            
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Loading...</p>
+            </div>
+            
+            <div class="error" id="error" style="display: none;">
+                  <p></p>
+            </div>
+            
+            <div class="empty" id="empty" style="display: none;">
+                <p>No users found. Try a different search term.</p>
+            </div>
+        </main>
+
+        <!-- Modal -->
+        <div id="userModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span> <!--This is the cross button HTML entity.-->
+                <div id="modalBody">
+                    <!-- User details will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="src/main.js" type="module"></script>
+</body>
+</html>
