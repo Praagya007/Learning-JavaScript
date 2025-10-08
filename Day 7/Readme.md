@@ -1,55 +1,44 @@
-# GitHub User Search Application
+# Calculator Application
 
-A modern, responsive web application that allows users to search for GitHub users, view their profiles, and navigate through search results with pagination.
+A modern, feature-rich calculator built with vanilla JavaScript, HTML, and CSS. This calculator supports basic arithmetic operations, keyboard input, theme toggling, and persistent theme preferences.
 
 ## Features
 
-- 🔍 **User Search**: Search for any GitHub user by username
-- 📱 **Responsive Design**: Works seamlessly on desktop and mobile devices
-- 📊 **Pagination**: Navigate through multiple pages of search results
-- 🖼️ **User Profiles**: View detailed user information in a modal
-- ⚡ **Loading States**: Visual feedback during data fetching
-- ❌ **Error Handling**: Graceful error messages for API failures
-- 🔄 **State Persistence**: Search results persist across page refreshes
-- ✨ **YouTube-style Clear Button**: Clear search input with a single click
+- ✨ **Basic Operations**: Addition, subtraction, multiplication, and division
+- 🔢 **Advanced Functions**: Percentage calculations and parentheses support
+- ⌨️ **Keyboard Support**: Full keyboard input for seamless user experience
+- 🌓 **Theme Toggle**: Switch between light and dark modes with persistent preferences
+- 🎯 **Smart Input Handling**: Prevents leading zeros and handles decimal points intelligently
+- ⚡ **Error Handling**: Graceful handling of division by zero and invalid expressions
+- 💾 **LocalStorage**: Remembers your theme preference across sessions
+- 🎨 **Clean UI**: Modern, responsive design that works on all devices
+
+## Demo
+
+Try these operations:
+- Basic: `5 + 3 * 2`
+- Parentheses: `(10 + 5) / 3`
+- Percentage: `50 * 20%`
+- Decimals: `3.14 * 2`
 
 ## Tech Stack
 
-- **HTML5**: Semantic markup and structure
-- **CSS3**: Modern styling with animations and transitions
-- **JavaScript (ES6+)**: Vanilla JavaScript with modules
-- **GitHub API**: RESTful API for fetching user data
-- **localStorage**: Client-side storage for state persistence
+- **HTML5**: Semantic structure
+- **CSS3**: Modern styling with theme support
+- **JavaScript (ES6)**: Vanilla JavaScript
+- **Math.js**: Expression evaluation library
+- **LocalStorage API**: Theme persistence
 
-## Project Structure
-
-```
-project/
-├── index.html
-├── styles.css
-└── js/
-    ├── main.js      # Entry point and app logic
-    ├── api.js       # API integration
-    └── ui.js        # UI manipulation functions
-```
-
-## Getting Started
-
-### Prerequisites
-
-- A modern web browser (Chrome, Firefox, Safari, Edge)
-- No additional dependencies required
-
-### Installation
+## Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/Praagya007/Learning-JavaScript.git
+git clone https://github.com/yourusername/calculator-app.git
 ```
 
 2. Navigate to the project directory:
 ```bash
-cd github-user-search
+cd calculator-app
 ```
 
 3. Open `index.html` in your browser:
@@ -66,126 +55,194 @@ xdg-open index.html
 
 ## Usage
 
-1. Enter a GitHub username or search term in the search box
-2. Click "Search" or press Enter
-3. Browse through the search results
-4. Click "View Details" on any user card to see more information
-5. Use pagination controls to navigate through multiple pages
-6. Click the "✕" button to clear the search input
-7. Press ESC to close the modal or click outside it
+### Mouse/Touch Input
 
-## Development Journey
+- Click number buttons (0-9) to input numbers
+- Click operator buttons (+, -, *, /, %, (, )) for operations
+- Click `.` for decimal point
+- Click `=` to calculate the result
+- Click `C` to clear all
+- Click `⌫` (backspace) to delete the last character
+- Toggle the theme switch to change between light and dark modes
 
-### Step 1: Project Setup & DOM Selection
+### Keyboard Shortcuts
 
-- **Initial Challenge**: Understanding the importance of selecting DOM elements before manipulation
-- **Key Learning**: Always declare DOM elements at the top of your script for easy access
-- **Implementation**: Created references to all necessary HTML elements
+| Key | Action |
+|-----|--------|
+| `0-9` | Input numbers |
+| `+` `-` `*` `/` | Basic operators |
+| `%` | Percentage |
+| `(` `)` | Parentheses |
+| `.` | Decimal point |
+| `Enter` or `=` | Calculate result |
+| `Backspace` | Delete last character |
+| `Delete` or `Escape` | Clear all |
+| `Shift + T` | Toggle theme |
 
-### Step 2: Event Listeners
+## Code Structure
 
-- **Challenge**: Understanding event propagation and the difference between window and document event listeners
-- **Key Question**: "Why use window.addEventListener instead of document?"
-- **Solution**: Used window.addEventListener for modal closing to ensure events bubble up correctly
+### Core Functions
 
-### Step 3: API Integration
+#### `updateDisplay()`
+Updates the calculator display with the current expression.
 
-- **Challenge**: Working with async/await and handling API responses
-- **Key Question**: "Why use API_BASE_URL instead of hardcoding URLs?"
-- **Solution**: Created a centralized API base URL for maintainability and easier debugging
-- **Bug Fixed**: Changed `data.totalCount` to `data.total_count` (GitHub API property name)
+#### `handleNumber(num)`
+Handles number input with smart zero handling:
+- Prevents multiple leading zeros
+- Replaces leading zero when a new number is entered
+- Resets on error state
 
-### Step 4: Display Search Results
+#### `handleOperator(op)`
+Manages operator input:
+- Prevents consecutive operators (replaces the last one)
+- Handles special operators like parentheses and percentage
+- Validates input state
 
-- **Challenge**: Creating dynamic HTML elements and attaching event listeners
-- **Key Question**: "What is the data-username attribute for?"
-- **Solution**: Used data-username to store user information for modal functionality
-- **Implementation**: Created user cards with avatars, usernames, and "View Details" buttons
+#### `handleDecimal()`
+Smart decimal point handling:
+- Prevents multiple decimals in the same number
+- Adds "0." after operators
+- Handles initial state correctly
 
-### Step 5: Modal Functionality
+#### `deletePrevious()`
+Removes the last character from the expression:
+- Resets to "0" if only one character remains
+- Clears error state
 
-- **Challenge**: Understanding modal behavior and proper event handling
-- **Key Question**: "Why does the modal close when I click inside it?"
-- **Solution**: Clarified the difference between modal backdrop and modal content
-- **Enhancement**: Added ESC key functionality for better user experience
+#### `clearAll()`
+Resets the calculator to initial state (displays "0").
 
-### Step 6: Error Handling & Empty States
+#### `calculate()`
+Evaluates the expression using Math.js:
+- Handles division by zero (checks for infinite results)
+- Catches syntax errors and displays "Error"
+- Uses `math.evaluate()` for safe expression evaluation
 
-- **Challenge**: Providing user feedback for different application states
-- **Solution**: Created functions to show/hide loading, error, and empty states
-- **Implementation**: Added visual feedback for all possible scenarios
+#### `themeToggling()`
+Manages theme switching:
+- Toggles between light and dark mode
+- Saves preference to localStorage
+- Updates body classes dynamically
 
-### Step 7: Pagination
+### Event Listeners
 
-- **Challenge**: Implementing pagination with proper state management
-- **Key Question**: "What is the onPageChange parameter?"
-- **Solution**: Used callback functions to handle page navigation
-- **Bug Fixed**: Corrected parameter order in createPagination function
-- **Enhancement**: Added page count display and button state management
+**Button Events:**
+- Number buttons: Attach click handlers to all `.number` elements
+- Operator buttons: Attach click handlers to all `.operator` elements
+- Special buttons: Individual handlers for decimal, equal, clear, and delete
 
-### Step 8: Refinements & Enhancements
+**Keyboard Events:**
+- Number keys: Direct input
+- Operator keys: Symbol detection
+- Function keys: Calculate, delete, and clear
+- Theme toggle: `Shift + T` combination
 
-- **YouTube-style Clear Button**: Added a clear button that appears when text is in the search input
-- **Smooth Transitions**: Implemented CSS transitions for better user experience
-- **State Persistence**: Used localStorage to maintain search state across page refreshes
-
-## Challenges & Solutions
-
-### 1. NaN Pagination Issue
-
-- **Problem**: Pagination displayed "Page 1 of NaN pages"
-- **Solution**: Fixed property name from `data.totalCount` to `data.total_count` and corrected parameter order
-
-### 2. Modal Closing Logic
-
-- **Problem**: Modal would close when clicking inside the content
-- **Solution**: Corrected event targeting to only close when clicking the modal backdrop
-
-### 3. Event Listener Management
-
-- **Problem**: "View Details" buttons didn't work after pagination
-- **Solution**: Added `addDetailsButtonListeners()` after displaying new results
-
-### 4. CSS Positioning
-
-- **Problem**: Clear button wasn't positioned correctly inside search input
-- **Solution**: Used absolute positioning within a relative parent wrapper
-
-### 5. State Persistence
-
-- **Problem**: Search results disappeared on page refresh
-- **Solution**: Implemented localStorage to save and restore search state
+**Theme Persistence:**
+- Loads saved theme from localStorage on page load
+- Applies appropriate theme class to body
+- Syncs theme toggle checkbox state
 
 ## Key Learning Points
 
-- **DOM Manipulation**: Understanding how to select, create, and modify DOM elements
-- **Event Handling**: Mastering event listeners and event propagation
-- **Async Programming**: Working with promises and async/await for API calls
-- **State Management**: Managing application state and user interactions
-- **CSS Positioning**: Using relative and absolute positioning for UI elements
-- **Local Storage**: Persisting data across browser sessions
-- **Error Handling**: Gracefully handling API failures and edge cases
-- **User Experience**: Adding smooth transitions and intuitive interactions
+### 1. Smart Input Handling
+The calculator prevents common input errors:
+```javascript
+const lastPart = expression.split(/[-+*/()%]/).pop();
+if (lastPart === "0" && num === "0") return; // Prevent multiple zeros
+```
+
+### 2. Operator Validation
+Prevents consecutive operators by replacing the last one:
+```javascript
+if (operators.includes(lastChar)) {
+  expression = expression.slice(0, -1) + op;
+}
+```
+
+### 3. Decimal Point Logic
+Ensures only one decimal per number:
+```javascript
+const lastPart = expression.split(/[-+*/()%]/).pop();
+if (!lastPart.includes(".")) {
+  expression += ".";
+}
+```
+
+### 4. Error Handling
+Gracefully handles calculation errors:
+```javascript
+if (!isFinite(result)) {
+  expression = "Error"; // Division by zero
+}
+```
+
+### 5. Theme Persistence
+Uses localStorage to remember user preferences:
+```javascript
+localStorage.setItem("theme", isDark ? "dark" : "light");
+```
+
+## Browser Compatibility
+
+- ✅ Chrome (latest)
+- ✅ Firefox (latest)
+- ✅ Safari (latest)
+- ✅ Edge (latest)
+- ✅ Opera (latest)
+
+**Note**: Requires Math.js library for expression evaluation.
+
+## Dependencies
+
+This calculator uses the Math.js library for safe expression evaluation:
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+```
 
 ## Future Enhancements
 
-- **Debounced Search**: Implement debouncing to reduce API calls during typing
-- **Recent Searches**: Display a list of recent searches for quick access
-- **Advanced Filtering**: Add filters for location, repositories, followers, etc.
-- **User Sorting**: Sort results by different criteria (followers, repositories, etc.)
-- **Dark Mode**: Add a dark theme toggle
-- **Accessibility**: Improve ARIA labels and keyboard navigation
-- **Performance**: Implement virtual scrolling for large result sets
-- **Testing**: Add unit tests for critical functionality
+- 📊 **History Feature**: Keep track of previous calculations
+- 🧮 **Scientific Mode**: Add trigonometric and logarithmic functions
+- 📱 **PWA Support**: Make it installable as a Progressive Web App
+- 🎵 **Sound Effects**: Add audio feedback for button presses
+- 📐 **Unit Converter**: Integrate unit conversion functionality
+- 🌍 **Localization**: Support for multiple languages and number formats
+- ♿ **Accessibility**: Improve ARIA labels and screen reader support
+- 📈 **Graphing**: Add basic graphing capabilities for functions
+
+## Common Issues & Solutions
+
+### Issue: Theme doesn't persist
+**Solution**: Ensure localStorage is enabled in your browser and the site isn't in incognito/private mode.
+
+### Issue: Keyboard input not working
+**Solution**: Make sure the calculator has focus by clicking on it first.
+
+### Issue: Math.js not loading
+**Solution**: Check your internet connection or download Math.js locally and update the script source.
+
+### Issue: Expression shows "Error"
+**Solution**: Check for invalid syntax like multiple operators or unmatched parentheses. Press Clear to reset.
 
 ## Contributing
 
-This project was developed as a learning exercise to understand modern web development concepts. Contributions are welcome! Please feel free to submit issues and enhancement requests.
+Contributions are welcome! Feel free to:
+- Report bugs
+- Suggest new features
+- Submit pull requests
+- Improve documentation
 
 ## License
 
 This project is open source and available under the MIT License.
 
+## Acknowledgments
+
+- Built with vanilla JavaScript for maximum compatibility
+- Uses Math.js for robust mathematical expression evaluation
+- Inspired by modern calculator designs with focus on user experience
+
 ---
 
-Built with ❤️ using vanilla JavaScript, HTML5, and CSS3
+Built with ❤️ using JavaScript, HTML5, and CSS3
