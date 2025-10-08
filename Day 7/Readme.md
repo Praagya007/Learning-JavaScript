@@ -33,7 +33,7 @@ Try these operations:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/calculator-app.git
+git clone https://github.com/Praagya007/Learning-JavaScript.git
 ```
 
 2. Navigate to the project directory:
