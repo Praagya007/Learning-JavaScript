@@ -36,7 +36,7 @@ A fully functional calculator with advanced features:
 
 **Tech Stack**: HTML5, CSS3, Vanilla JavaScript, Math.js
 
-[View Calculator README](Day%207/README.md)
+[View Calculator README](Day%207/Readme.md)
 
 ---
 
